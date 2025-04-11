@@ -21,6 +21,7 @@ CNN_LSTM/
 │   └── dataAll.csv		 # 默认数据集，作为Demo
 ├── weights/             # 预训练权重
 ├── outputs/             # 默认输出目录
+│   └── demo/		     # 在Demo数据集上训练输出的Demo，包括模型权重、训练日志、结果可视化、训练配置，参考训练效果可供参考
 ├── scripts/             # 常用操作的Shell脚本
 │   ├── train.sh         # 训练脚本
 │   ├── predict.sh       # 推理预测脚本
@@ -66,6 +67,12 @@ conda env create -f ./environment.yml
 
 # 方法三： 从配置文件安装Python包
 pip install -r ./requirement.txt
+```
+
+3. 安装matplotlib可视化中文字体支持：
+
+```bash
+./scripts/CN_fonts_support.sh
 ```
 
 ## 使用方法

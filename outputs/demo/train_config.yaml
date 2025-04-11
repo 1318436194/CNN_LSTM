@@ -38,7 +38,7 @@ training:
   scheduler_factor: 0.5              # 学习率调度器衰减因子
   scheduler_patience: 10              # 学习率调度器耐心值
   use_tensorboard: True              # 是否使用tensorboard记录日志
-  tensorboard_dir: "logs/test"       # tensorboard日志目录
+  tensorboard_dir: "logs/demo"       # tensorboard日志目录
 
 # 超参数调优配置
 tuning:
@@ -74,4 +74,4 @@ visualization:
   save_format: "png"                 # 保存图像的格式
 
 # 保存结果的输出目录
-output_dir: "outputs/test"
+output_dir: "outputs/demo"
