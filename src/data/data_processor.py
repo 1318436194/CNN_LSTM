@@ -264,8 +264,39 @@ class TimeSeriesDataProcessor:
             predictions: 要保存的预测值
             save_path: 保存预测值的路径
         """
-        # 从预测值创建DataFrame
-        df_pred = pd.DataFrame(predictions)
+        # 确保存储前 predictions 是 2D numpy 数组 [n_samples, n_features]
+        if predictions.ndim == 3:
+            # 假设形状为 (n_samples, 1, n_features) 或 (n_samples, sequence_length, 1)
+            # 我们需要将其转换为 (n_samples, n_features) 或 (n_samples * sequence_length, 1)
+            # 根据错误信息 (N, 1, 1)，最可能的情况是 (n_samples, 1, 1) -> (n_samples, 1)
+            if predictions.shape[1] == 1 and predictions.shape[2] == 1:
+                predictions = predictions.reshape(-1, 1)
+            # 可以添加对其他 3D 情况的处理，但这通常取决于模型的具体输出
+            else:
+                 # 例如，如果输出是 (N, seq_len, features), 可能需要不同的处理方式
+                 # 这里暂时只处理 (N, 1, 1) 的情况，并对其他3D情况发出警告
+                 print(f"Warning: Unexpected 3D predictions shape {predictions.shape} in save_predictions. Reshaping to (-1, 1).")
+                 predictions = predictions.reshape(-1, 1) # Fallback reshape
+        elif predictions.ndim == 1:
+            # 从 (n_samples,) 转换为 (n_samples, 1)
+            predictions = predictions.reshape(-1, 1)
+        elif predictions.ndim != 2:
+            # 对于非 1D/2D/3D 的情况或其他未预料的维度
+             raise ValueError(f"Unsupported predictions shape {predictions.shape} for saving.")
+
+        # 获取目标列名，如果不可用则使用默认名称
+        target_column = self.config.get('target_column', 'prediction')
         
-        # 保存为CSV
-        df_pred.to_csv(save_path, index=False) 
+        # 如果有多列预测结果，生成列名
+        num_features = predictions.shape[1]
+        if num_features > 1:
+            columns = [f"{target_column}_{i}" for i in range(num_features)]
+        else:
+            columns = [target_column]
+
+        # 创建DataFrame
+        df_pred = pd.DataFrame(predictions, columns=columns)
+        
+        # 保存到CSV
+        df_pred.to_csv(save_path, index=False)
+        print(f"预测结果已保存到 {save_path}")

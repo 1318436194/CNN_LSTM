@@ -27,7 +27,8 @@ model:
   num_layers: 1                      # LSTM模块级联层数
   dropout: 0.35724735537818275                       # Dropout率
   learning_rate: 0.0005327153939841018               # 优化器学习率
-  checkpoint_path: null              # 加载模型检查点的路径
+  use_checkpoint: False                # 是否从检查点继续训练模型
+  checkpoint_path: "outputs/demo/temp_pred.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
 
 # 训练配置
 training:

@@ -25,9 +25,10 @@ def create_model(config: Dict[str, Any]) -> torch.nn.Module:
     else:
         raise ValueError(f"不支持的模型类型: {model_type}")
     
-    # 如果提供了检查点则加载
-    if 'checkpoint_path' in config and config['checkpoint_path']:
-        load_model_checkpoint(model, config['checkpoint_path'])
+    # 从检查点加载
+    if 'use_checkpoint' in config and config['use_checkpoint']:
+        if 'checkpoint_path' in config and config['checkpoint_path']:
+            load_model_checkpoint(model, config['checkpoint_path'])
     
     return model
 

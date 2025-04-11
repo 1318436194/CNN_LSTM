@@ -179,6 +179,9 @@ def predict(config, logger):
 def tune(config, logger):
     """为模型调优超参数。"""
     logger.info("开始超参数调优")
+
+    # 禁止从检查点加载模型
+    config['model']['use_checkpoint'] = False
     
     # 初始化数据处理器并准备数据
     data_processor = TimeSeriesDataProcessor(config['data'])
