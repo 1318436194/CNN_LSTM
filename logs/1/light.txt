@@ -1,0 +1,258 @@
+Light Part
+[I 2025-04-08 20:56:34,664] A new study created in memory with name: no-name-a29f4160-c13e-4e7d-82ce-b033d9314773
+/root/autodl-tmp/srp_test/./TrainTest.py:31: FutureWarning: suggest_loguniform has been deprecated in v3.0.0. This feature will be removed in v6.0.0. See https://github.com/optuna/optuna/releases/tag/v3.0.0. Use suggest_float(..., log=True) instead.
+  learning_rate = trial.suggest_loguniform("learning_rate", 1e-4, 1e-1)
+Epoch 0, Loss: 0.015856814599402885
+Epoch 1, Loss: 0.003127773154367943
+Epoch 2, Loss: 0.0025819483105939383
+Epoch 3, Loss: 0.0023938710038924997
+Epoch 4, Loss: 0.002365509236001455
+Epoch 5, Loss: 0.0022710906818690824
+Epoch 6, Loss: 0.0022515212491271085
+Epoch 7, Loss: 0.0022555516391748382
+Epoch 8, Loss: 0.002197595030422856
+Epoch 9, Loss: 0.0021883908368181436
+[I 2025-04-08 20:57:12,253] Trial 0 finished with value: 0.0016916983295232058 and parameters: {'hidden_dim': 159, 'num_layers': 3, 'dropout': 0.31709179190945247, 'learning_rate': 0.0002681790506278611}. Best is trial 0 with value: 0.0016916983295232058.
+Epoch 0, Loss: 0.006412653829022197
+Epoch 1, Loss: 0.002325947550139617
+Epoch 2, Loss: 0.0022644715593764333
+Epoch 3, Loss: 0.0021687563584702908
+Epoch 4, Loss: 0.0021429003878260917
+Epoch 5, Loss: 0.0020924000367635817
+Epoch 6, Loss: 0.0021014192810270755
+Epoch 7, Loss: 0.0019796812490889483
+Epoch 8, Loss: 0.0020539473556975903
+Epoch 9, Loss: 0.00198928192527624
+[I 2025-04-08 20:57:50,033] Trial 1 finished with value: 0.0016545690596103668 and parameters: {'hidden_dim': 135, 'num_layers': 3, 'dropout': 0.476483344092672, 'learning_rate': 0.006553902787686116}. Best is trial 1 with value: 0.0016545690596103668.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.3504600807071684 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.014012753546575834
+Epoch 1, Loss: 0.00223655083781767
+Epoch 2, Loss: 0.002159773921253296
+Epoch 3, Loss: 0.002076357694146814
+Epoch 4, Loss: 0.002021957294257335
+Epoch 5, Loss: 0.0020042343910573416
+Epoch 6, Loss: 0.0019594527570184366
+Epoch 7, Loss: 0.0019367633427907827
+Epoch 8, Loss: 0.0019798274137783887
+Epoch 9, Loss: 0.0019231044030719913
+[I 2025-04-08 20:58:20,469] Trial 2 finished with value: 0.0016599330119788647 and parameters: {'hidden_dim': 191, 'num_layers': 1, 'dropout': 0.3504600807071684, 'learning_rate': 0.01189461346326452}. Best is trial 1 with value: 0.0016545690596103668.
+Epoch 0, Loss: 0.008258005780332563
+Epoch 1, Loss: 0.0030874587836811638
+Epoch 2, Loss: 0.0027980071399502865
+Epoch 3, Loss: 0.0024982699883034135
+Epoch 4, Loss: 0.0024364718473473814
+Epoch 5, Loss: 0.0023442399398446445
+Epoch 6, Loss: 0.002283176139533724
+Epoch 7, Loss: 0.0022876120144756876
+Epoch 8, Loss: 0.0021862535074455435
+Epoch 9, Loss: 0.002156313928979926
+[I 2025-04-08 20:58:43,933] Trial 3 finished with value: 0.0018421118147671223 and parameters: {'hidden_dim': 69, 'num_layers': 3, 'dropout': 0.4535569008581116, 'learning_rate': 0.0007715575263657505}. Best is trial 1 with value: 0.0016545690596103668.
+Epoch 0, Loss: 0.009698799722572425
+Epoch 1, Loss: 0.002840361674742137
+Epoch 2, Loss: 0.0026583915810944035
+Epoch 3, Loss: 0.0023725227700552064
+Epoch 4, Loss: 0.0022432518151884037
+Epoch 5, Loss: 0.002254255072898004
+Epoch 6, Loss: 0.002161076730869642
+Epoch 7, Loss: 0.0021966521807792938
+Epoch 8, Loss: 0.002138776560179128
+Epoch 9, Loss: 0.002177120802111969
+[I 2025-04-08 20:59:08,109] Trial 4 finished with value: 0.001652444712817669 and parameters: {'hidden_dim': 96, 'num_layers': 3, 'dropout': 0.3360357614839376, 'learning_rate': 0.0022511509687158354}. Best is trial 4 with value: 0.001652444712817669.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.4617392658434303 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.009705700440241433
+Epoch 1, Loss: 0.002150169993742233
+Epoch 2, Loss: 0.0021248256693602676
+Epoch 3, Loss: 0.002009816576581925
+Epoch 4, Loss: 0.0019766675117397227
+Epoch 5, Loss: 0.0020174562982879806
+Epoch 6, Loss: 0.0020060641819216515
+Epoch 7, Loss: 0.0019446191396038956
+Epoch 8, Loss: 0.0019263880498417677
+Epoch 9, Loss: 0.0019720405239041145
+[I 2025-04-08 20:59:38,839] Trial 5 finished with value: 0.0015993417473509908 and parameters: {'hidden_dim': 182, 'num_layers': 1, 'dropout': 0.4617392658434303, 'learning_rate': 0.011967069887363697}. Best is trial 5 with value: 0.0015993417473509908.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.3361139160694375 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.014629829178490426
+Epoch 1, Loss: 0.002342776490571318
+Epoch 2, Loss: 0.002218701028642699
+Epoch 3, Loss: 0.002191028915127035
+Epoch 4, Loss: 0.002175071709164668
+Epoch 5, Loss: 0.0021088442811316517
+Epoch 6, Loss: 0.002059289509439046
+Epoch 7, Loss: 0.0020502063374761947
+Epoch 8, Loss: 0.0020293719541968594
+Epoch 9, Loss: 0.001976451848664821
+[I 2025-04-08 21:00:06,985] Trial 6 finished with value: 0.001566683524288237 and parameters: {'hidden_dim': 188, 'num_layers': 1, 'dropout': 0.3361139160694375, 'learning_rate': 0.0010464451476909806}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.15584318832300814 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.045673812100118616
+Epoch 1, Loss: 0.04183985681795492
+Epoch 2, Loss: 0.041934272228944594
+Epoch 3, Loss: 0.04202608616750051
+Epoch 4, Loss: 0.042008255308539404
+Epoch 5, Loss: 0.04187742576184796
+Epoch 6, Loss: 0.04182840744033456
+Epoch 7, Loss: 0.04185188613468554
+Epoch 8, Loss: 0.041932938643163296
+Epoch 9, Loss: 0.042037024982727884
+[I 2025-04-08 21:00:25,274] Trial 7 finished with value: 0.03233307972550392 and parameters: {'hidden_dim': 70, 'num_layers': 1, 'dropout': 0.15584318832300814, 'learning_rate': 0.053260127025828524}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.09795334648522662
+Epoch 1, Loss: 0.051884309116114934
+Epoch 2, Loss: 0.0566788765011219
+Epoch 3, Loss: 0.05491422216703252
+Epoch 4, Loss: 0.056451166512035744
+Epoch 5, Loss: 0.07620445812666198
+Epoch 6, Loss: 0.04928305164978999
+Epoch 7, Loss: 0.05203669032581696
+Epoch 8, Loss: 0.04958505174826558
+Epoch 9, Loss: 0.05083860336325881
+[I 2025-04-08 21:00:54,843] Trial 8 finished with value: 0.03565532714128494 and parameters: {'hidden_dim': 134, 'num_layers': 2, 'dropout': 0.1578117944449817, 'learning_rate': 0.04231794361993683}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.022891266094293535
+Epoch 1, Loss: 0.005773866872825637
+Epoch 2, Loss: 0.00457702876840968
+Epoch 3, Loss: 0.0037812089575908897
+Epoch 4, Loss: 0.0031589985833639597
+Epoch 5, Loss: 0.002779363233471153
+Epoch 6, Loss: 0.002596514783913224
+Epoch 7, Loss: 0.0024875761151012805
+Epoch 8, Loss: 0.002411849361066366
+Epoch 9, Loss: 0.002388543365792962
+[I 2025-04-08 21:01:19,790] Trial 9 finished with value: 0.0018605167279019952 and parameters: {'hidden_dim': 58, 'num_layers': 2, 'dropout': 0.3816755438203918, 'learning_rate': 0.00010334799394449448}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.008610889506696655
+Epoch 1, Loss: 0.00241524397094575
+Epoch 2, Loss: 0.002237685107222826
+Epoch 3, Loss: 0.0022364418673976438
+Epoch 4, Loss: 0.0021211456254028103
+Epoch 5, Loss: 0.0021072030462830032
+Epoch 6, Loss: 0.0021146958136630087
+Epoch 7, Loss: 0.0020842387044955634
+Epoch 8, Loss: 0.002014256677187116
+Epoch 9, Loss: 0.00194024782877688
+[I 2025-04-08 21:01:50,772] Trial 10 finished with value: 0.0018028328195214272 and parameters: {'hidden_dim': 163, 'num_layers': 2, 'dropout': 0.2572928464123556, 'learning_rate': 0.0013854036855587128}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.23921579098857587 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.01630026633686545
+Epoch 1, Loss: 0.003222053295012745
+Epoch 2, Loss: 0.003144622391952974
+Epoch 3, Loss: 0.0031848516663048054
+Epoch 4, Loss: 0.003131851021103879
+Epoch 5, Loss: 0.0030785377842953384
+Epoch 6, Loss: 0.0029738402495262917
+Epoch 7, Loss: 0.002899726441629776
+Epoch 8, Loss: 0.002972310179810426
+Epoch 9, Loss: 0.002922042333180221
+[I 2025-04-08 21:02:28,033] Trial 11 finished with value: 0.0021255766041576862 and parameters: {'hidden_dim': 194, 'num_layers': 1, 'dropout': 0.23921579098857587, 'learning_rate': 0.01287162805834006}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.42414691040253627 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.007907554161132927
+Epoch 1, Loss: 0.0024917664425873494
+Epoch 2, Loss: 0.00221490679875232
+Epoch 3, Loss: 0.0020831122897883377
+Epoch 4, Loss: 0.0020423864166354533
+Epoch 5, Loss: 0.001985521708606606
+Epoch 6, Loss: 0.001994195586374234
+Epoch 7, Loss: 0.001966441766481006
+Epoch 8, Loss: 0.001988844886470427
+Epoch 9, Loss: 0.0019119421617843483
+[I 2025-04-08 21:02:56,398] Trial 12 finished with value: 0.0017377231270074844 and parameters: {'hidden_dim': 170, 'num_layers': 1, 'dropout': 0.42414691040253627, 'learning_rate': 0.000606910379308324}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.41096186641235977 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.00961845642730889
+Epoch 1, Loss: 0.0021650795688534655
+Epoch 2, Loss: 0.0020472347109561514
+Epoch 3, Loss: 0.002048772115618127
+Epoch 4, Loss: 0.0020404691922921324
+Epoch 5, Loss: 0.0019894872010165895
+Epoch 6, Loss: 0.001987057653392052
+Epoch 7, Loss: 0.0019469833560855831
+Epoch 8, Loss: 0.001961441427503326
+Epoch 9, Loss: 0.0019463407533050218
+[I 2025-04-08 21:03:34,235] Trial 13 finished with value: 0.0017647596541792154 and parameters: {'hidden_dim': 198, 'num_layers': 1, 'dropout': 0.41096186641235977, 'learning_rate': 0.004976197530614947}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.25440754899992546 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.007922318518848908
+Epoch 1, Loss: 0.00223291613269461
+Epoch 2, Loss: 0.0021407527291846303
+Epoch 3, Loss: 0.002028457208241268
+Epoch 4, Loss: 0.002021548035696558
+Epoch 5, Loss: 0.00204039174245625
+Epoch 6, Loss: 0.0020185975451590264
+Epoch 7, Loss: 0.0020159274398593415
+Epoch 8, Loss: 0.00206025010443338
+Epoch 9, Loss: 0.0020735089028986716
+[I 2025-04-08 21:03:54,193] Trial 14 finished with value: 0.0016615944914519787 and parameters: {'hidden_dim': 106, 'num_layers': 1, 'dropout': 0.25440754899992546, 'learning_rate': 0.019529870979000347}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.014585018101596932
+Epoch 1, Loss: 0.0024551316460441207
+Epoch 2, Loss: 0.0022965672566475936
+Epoch 3, Loss: 0.002232463334022635
+Epoch 4, Loss: 0.002097765965637092
+Epoch 5, Loss: 0.002107898815941043
+Epoch 6, Loss: 0.002084933085865398
+Epoch 7, Loss: 0.0020958310520566045
+Epoch 8, Loss: 0.00205971998646685
+Epoch 9, Loss: 0.0020348359523312664
+[I 2025-04-08 21:04:23,039] Trial 15 finished with value: 0.001832034788094461 and parameters: {'hidden_dim': 171, 'num_layers': 2, 'dropout': 0.4839126473892455, 'learning_rate': 0.0020283207818560596}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.10647532353026076 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.007843309121416519
+Epoch 1, Loss: 0.0024941848171448973
+Epoch 2, Loss: 0.002301445690682158
+Epoch 3, Loss: 0.0021977401453513287
+Epoch 4, Loss: 0.002184608549400653
+Epoch 5, Loss: 0.0021148389209240744
+Epoch 6, Loss: 0.0020699925507204437
+Epoch 7, Loss: 0.002074807821190916
+Epoch 8, Loss: 0.0020141410085205104
+Epoch 9, Loss: 0.0020387934111967317
+[I 2025-04-08 21:04:52,965] Trial 16 finished with value: 0.0017313146963715553 and parameters: {'hidden_dim': 144, 'num_layers': 1, 'dropout': 0.10647532353026076, 'learning_rate': 0.0005081980771435416}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.005415200662980901
+Epoch 1, Loss: 0.0022330770489089645
+Epoch 2, Loss: 0.00217479420108891
+Epoch 3, Loss: 0.0020913416698643164
+Epoch 4, Loss: 0.002156575186825471
+Epoch 5, Loss: 0.0021042402562537663
+Epoch 6, Loss: 0.002034567316451746
+Epoch 7, Loss: 0.002046126562700232
+Epoch 8, Loss: 0.002004861891363384
+Epoch 9, Loss: 0.0019926308552385306
+[I 2025-04-08 21:05:25,555] Trial 17 finished with value: 0.0018221543869003654 and parameters: {'hidden_dim': 182, 'num_layers': 2, 'dropout': 0.3778524795381639, 'learning_rate': 0.004329014052562774}. Best is trial 6 with value: 0.001566683524288237.
+/root/miniconda3/envs/srp_test/lib/python3.10/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2838504244328094 and num_layers=1
+  warnings.warn(
+Epoch 0, Loss: 0.17628199445856055
+Epoch 1, Loss: 0.05202308012081719
+Epoch 2, Loss: 0.05537508573928257
+Epoch 3, Loss: 0.05914532995396635
+Epoch 4, Loss: 0.06228016681015128
+Epoch 5, Loss: 0.05520975239484049
+Epoch 6, Loss: 0.05163531851750321
+Epoch 7, Loss: 0.055333483041968286
+Epoch 8, Loss: 0.05215898465546893
+Epoch 9, Loss: 0.0528285799071011
+[I 2025-04-08 21:05:44,160] Trial 18 finished with value: 0.03957359492778778 and parameters: {'hidden_dim': 117, 'num_layers': 1, 'dropout': 0.2838504244328094, 'learning_rate': 0.08117318789344038}. Best is trial 6 with value: 0.001566683524288237.
+Epoch 0, Loss: 0.034863302265734
+Epoch 1, Loss: 0.002478865486649206
+Epoch 2, Loss: 0.0022027620052629173
+Epoch 3, Loss: 0.0023053517817837616
+Epoch 4, Loss: 0.0022139793373332018
+Epoch 5, Loss: 0.0021852742752809895
+Epoch 6, Loss: 0.002029724647191626
+Epoch 7, Loss: 0.00212068255144603
+Epoch 8, Loss: 0.0020274404662436944
+Epoch 9, Loss: 0.0021118961257942407
+[I 2025-04-08 21:06:13,642] Trial 19 finished with value: 0.001625041477382183 and parameters: {'hidden_dim': 149, 'num_layers': 2, 'dropout': 0.20977709910850795, 'learning_rate': 0.02538897011527857}. Best is trial 6 with value: 0.001566683524288237.
+The best hyperparameters: {'hidden_dim': 188, 'num_layers': 1, 'dropout': 0.3361139160694375, 'learning_rate': 0.0010464451476909806}
+The best validation loss: 0.00157
+Epoch 0, Loss: 0.016709981920913133
+Epoch 10, Loss: 0.00198313354709038
+Epoch 20, Loss: 0.0018797050418670107
+Epoch 30, Loss: 0.0018825416774744532
+Epoch 40, Loss: 0.0017939471870038954
+Epoch 50, Loss: 0.0017761852816542292
+Epoch 60, Loss: 0.0017515581510052448
+Epoch 70, Loss: 0.001711792311923601
+Epoch 80, Loss: 0.0017216870872511119
+Epoch 90, Loss: 0.0016522814271256055
+First Step MSE: 0.0018455510726198554, MAE: 0.016444845125079155
+Last Step MSE: 0.0030186111107468605, MAE: 0.021434815600514412
