@@ -49,45 +49,53 @@ class Visualizer:
             x_label: X轴标签
             y_label: Y轴标签
         """
-        plt.figure(figsize=self.figsize, dpi=self.dpi)
-        
         # 处理不同的维度
         if len(predictions.shape) == 3:
-            # 多步预测
-            # 获取第一步和最后一步的预测
-            first_step_pred = predictions[:, 0, 0]
-            last_step_pred = predictions[:, -1, 0]
-            first_step_target = targets[:, 0, 0]
-            last_step_target = targets[:, -1, 0]
-            
-            # 绘制第一步
-            plt.subplot(2, 1, 1)
-            plt.plot(first_step_pred, color=self.colors.get('prediction', 'red'), 
-                    label='预测值 (第一步)')
-            plt.plot(first_step_target, color=self.colors.get('actual', 'blue'), 
-                    label='实际值 (第一步)')
-            if self.show_legend:
-                plt.legend()
-            plt.title(f'第一步 - {title}')
-            plt.xlabel(x_label)
-            plt.ylabel(y_label)
-            plt.grid(True, alpha=0.3)
-            
-            # 绘制最后一步
-            plt.subplot(2, 1, 2)
-            plt.plot(last_step_pred, color=self.colors.get('prediction', 'red'), 
-                    label='预测值 (最后一步)')
-            plt.plot(last_step_target, color=self.colors.get('actual', 'blue'), 
-                    label='实际值 (最后一步)')
-            if self.show_legend:
-                plt.legend()
-            plt.title(f'最后一步 - {title}')
-            plt.xlabel(x_label)
-            plt.ylabel(y_label)
-            plt.grid(True, alpha=0.3)
-            
-            plt.tight_layout()
+            for i in range(predictions.shape[2]):
+                plt.figure(figsize=self.figsize, dpi=self.dpi)
+                # 多步预测
+                # 获取第一步和最后一步的预测
+                first_step_pred = predictions[:, 0, i]
+                last_step_pred = predictions[:, -1, i]
+                first_step_target = targets[:, 0, i]
+                last_step_target = targets[:, -1, i]
+
+                # 绘制第一步
+                plt.subplot(2, 1, 1)
+                plt.plot(first_step_pred, color=self.colors.get('prediction', 'red'),
+                        label='预测值 (第一步)')
+                plt.plot(first_step_target, color=self.colors.get('actual', 'blue'),
+                        label='实际值 (第一步)')
+                if self.show_legend:
+                    plt.legend()
+                plt.title(f'第一步 - {title}')
+                plt.xlabel(x_label)
+                plt.ylabel(y_label)
+                plt.grid(True, alpha=0.3)
+
+                # 绘制最后一步
+                plt.subplot(2, 1, 2)
+                plt.plot(last_step_pred, color=self.colors.get('prediction', 'red'),
+                        label='预测值 (最后一步)')
+                plt.plot(last_step_target, color=self.colors.get('actual', 'blue'),
+                        label='实际值 (最后一步)')
+                if self.show_legend:
+                    plt.legend()
+                plt.title(f'最后一步 - {title}')
+                plt.xlabel(x_label)
+                plt.ylabel(y_label)
+                plt.grid(True, alpha=0.3)
+
+                plt.tight_layout()
+                # 保存或显示图表
+                if save_path:
+                    os.makedirs(os.path.dirname(save_path+f"_{i+1}.{self.save_format}"), exist_ok=True)
+                    plt.savefig(save_path+f"_{i+1}.{self.save_format}", format=self.save_format, dpi=self.dpi)
+                    plt.close()
+                else:
+                    plt.show()
         else:
+            plt.figure(figsize=self.figsize, dpi=self.dpi)
             # 单步预测
             plt.plot(predictions, color=self.colors.get('prediction', 'red'), 
                     label='预测值')
@@ -100,13 +108,13 @@ class Visualizer:
             plt.ylabel(y_label)
             plt.grid(True, alpha=0.3)
         
-        # 保存或显示图表
-        if save_path:
-            os.makedirs(os.path.dirname(save_path), exist_ok=True)
-            plt.savefig(save_path, format=self.save_format, dpi=self.dpi)
-            plt.close()
-        else:
-            plt.show()
+            # 保存或显示图表
+            if save_path:
+                os.makedirs(os.path.dirname(save_path), exist_ok=True)
+                plt.savefig(save_path, format=self.save_format, dpi=self.dpi)
+                plt.close()
+            else:
+                plt.show()
     
     def plot_forecast(self, 
                      forecast: np.ndarray,

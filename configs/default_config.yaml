@@ -7,7 +7,11 @@ data:
   feature_columns:                   # 数据集中用于训练的特征列名列表
     - "Temp"
     - "Humi"
-  target_column: "Temp"              # 预测目标特征的列名
+    - "Light"
+  target_columns:                    # 预测目标特征的列名
+    - "Temp"
+    - "Humi"
+    - "Light"
   sequence_length: 30                # 用作输入的时间步数
   forecast_horizon: 1                # 预测的时间步数
   train_ratio: 0.7                   # 划分训练数据比例
@@ -21,21 +25,22 @@ data:
 model:
   type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
   bidirectional: True                # 是否使用双向LSTM
-  input_dim: 2                       # 输入特征维度
+  input_dim: 3                       # 输入特征维度
   hidden_dim: 96                    # 隐藏层维度大小
-  output_dim: 1                      # 输出特征数量（目标维度）
+  output_dim: 3                      # 输出特征数量（目标维度）
   num_layers: 1                      # LSTM模块级联层数
   dropout: 0.35724735537818275                       # Dropout率
   learning_rate: 0.0005327153939841018               # 优化器学习率
   use_checkpoint: False                # 是否从检查点继续训练模型
-  checkpoint_path: "outputs/demo/temp_pred.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
+  checkpoint_path: "outputs/demo/demo_weight.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
 
 # 训练配置
 training:
-  epochs: 100                        # 训练轮次
+  epochs: 50                        # 训练轮次
   optimizer: "adam"                  # 优化器类型（adam, sgd等）
   loss_function: "mse"               # 损失函数（mse, mae等）
   early_stopping_patience: 4         # 早停策略的耐心值
+  use_scheduler: False                # 是否使用学习率调度器
   scheduler_factor: 0.5              # 学习率调度器衰减因子
   scheduler_patience: 10              # 学习率调度器耐心值
   use_tensorboard: True              # 是否使用tensorboard记录日志

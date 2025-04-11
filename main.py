@@ -126,7 +126,7 @@ def train(config, logger):
     visualizer = Visualizer(config.get('visualization', {}))
     
     # 绘制预测图
-    predictions_plot_path = os.path.join(output_dir, 'predictions.png')
+    predictions_plot_path = os.path.join(output_dir, 'predictions')
     visualizer.plot_predictions(predictions, targets, predictions_plot_path)
     
     # 绘制训练历史图
