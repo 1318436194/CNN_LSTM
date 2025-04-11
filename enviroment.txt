@@ -80,4 +80,5 @@ dependencies:
       - triton==3.2.0
       - typing-extensions==4.13.1
       - tzdata==2025.2
-prefix: /home/zh/anaconda3/envs/srp_test
+      - tensorboard==2.10.1
+prefix: /home/zh/anaconda3/envs/CNN_LSTM
