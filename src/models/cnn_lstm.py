@@ -18,7 +18,8 @@ class CNNLSTM(nn.Module):
                  output_dim: int, 
                  num_layers: int = 2, 
                  dropout: float = 0.2,
-                 kernel_size: int = 3):
+                 kernel_size: int = 3,
+                 bidirectional: bool = False):
         """
         初始化CNN-LSTM模型。
         
@@ -46,7 +47,8 @@ class CNNLSTM(nn.Module):
             hidden_size=hidden_dim,
             num_layers=num_layers,
             dropout=dropout if num_layers > 1 else 0,
-            batch_first=True
+            batch_first=True,
+            bidirectional=bidirectional
         )
         
         # LSTM解码器
@@ -55,11 +57,12 @@ class CNNLSTM(nn.Module):
             hidden_size=hidden_dim,
             num_layers=num_layers,
             dropout=dropout if num_layers > 1 else 0,
-            batch_first=True
+            batch_first=True,
+            bidirectional=bidirectional
         )
         
         # 输出层
-        self.fc = nn.Linear(hidden_dim, output_dim)
+        self.fc = nn.Linear(hidden_dim*2 if bidirectional else hidden_dim, output_dim)
     
     def forward(self, x: torch.Tensor, target_len: int = 1) -> torch.Tensor:
         """
@@ -112,5 +115,6 @@ class CNNLSTM(nn.Module):
             output_dim=config['output_dim'],
             num_layers=config['num_layers'],
             dropout=config['dropout'],
-            kernel_size=config.get('kernel_size', 3)
+            kernel_size=config.get('kernel_size', 3),
+            bidirectional=bool(config.get('bidirectional', False))
         ) 

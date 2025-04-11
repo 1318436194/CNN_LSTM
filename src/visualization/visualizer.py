@@ -3,11 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import Dict, Any, List, Tuple, Optional, Union
 
-# 配置matplotlib支持中文显示
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.sans-serif'] = ['SimHei']  # 显示中文黑体
-# plt.rcParams['font.sans-serif'] = ['?????']  # 艺术字体
-plt.rcParams['axes.unicode_minus'] = False
 
 class Visualizer:
     """
@@ -30,6 +25,11 @@ class Visualizer:
         })
         self.show_legend = config.get('show_legend', True)
         self.save_format = config.get('save_format', 'png')
+        self.font = config.get('font', "SimHei")
+        # 配置matplotlib支持中文显示
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['font.sans-serif'] = self.font
+        plt.rcParams['axes.unicode_minus'] = False
     
     def plot_predictions(self, 
                         predictions: np.ndarray, 

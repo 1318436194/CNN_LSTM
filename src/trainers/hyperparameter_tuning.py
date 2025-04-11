@@ -80,6 +80,13 @@ def objective_factory(
                     lr_params.get('min', 0.0001), 
                     lr_params.get('max', 0.1)
                 )
+
+        if 'bidirectional' in config.get('tuning', {}).get('parameters', {}):
+            config['model']['bidirectional'] = trial.suggest_int(
+                'bidirectional',
+                0,
+                1
+            )
         
         # 可以在此处添加更多超参数
         

@@ -37,15 +37,19 @@ while [[ $# -gt 0 ]]; do
 done
 
 # 检查是否提供了检查点路径
-if [ -z "$CHECKPOINT_PATH" ]; then
-  echo "错误: 预测需要提供--checkpoint_path参数"
-  exit 1
-fi
+# if [ -z "$CHECKPOINT_PATH" ]; then
+#   echo "错误: 预测需要提供--checkpoint_path参数"
+#   exit 1
+# fi
 
 # 构建命令
-CMD="python main.py --mode predict --config ${CONFIG_FILE} --checkpoint_path ${CHECKPOINT_PATH}"
+CMD="python main.py --mode predict --config ${CONFIG_FILE}"
 
 # 如果提供了可选参数，则添加
+if [ ! -z "$CHECKPOINT_PATH" ]; then
+  CMD="$CMD --checkpoint_path $CHECKPOINT_PATH"
+fi
+
 if [ ! -z "$DATA_PATH" ]; then
   CMD="$CMD --data_path $DATA_PATH"
 fi
