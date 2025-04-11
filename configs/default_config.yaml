@@ -1,0 +1,72 @@
+# CNN-LSTM 时间序列预测项目的默认配置
+
+# 数据配置
+data:
+  file_path: "datasets/dataAll.csv"  # 输入数据文件路径
+  time_column: "Time"                # 时间/日期列名
+  feature_columns:                   # 特征列名列表
+    - "Temp"
+    - "Humi"
+  target_column: "Temp"            # 预测目标列名
+  sequence_length: 30                # 用作输入的时间步数
+  forecast_horizon: 5                # 预测的时间步数
+  train_ratio: 0.6                   # 训练数据比例
+  val_ratio: 0.2                     # 验证数据比例
+  test_ratio: 0.2                    # 测试数据比例
+  batch_size: 64                     # 训练和验证的批量大小
+  shuffle: false                      # 是否打乱训练数据
+  normalize: true                    # 是否对数据进行归一化
+
+# 模型配置
+model:
+  type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
+  input_dim: 2                       # 输入特征数量
+  hidden_dim: 100                    # 隐藏层维度大小
+  output_dim: 1                      # 输出特征数量（目标维度）
+  num_layers: 2                      # LSTM模块级联层数
+  dropout: 0.2                       # Dropout率
+  learning_rate: 0.001               # 优化器学习率
+  checkpoint_path: null              # 加载模型检查点的路径
+
+# 训练配置
+training:
+  epochs: 100                        # 训练轮次
+  optimizer: "adam"                  # 优化器类型（adam, sgd等）
+  loss_function: "mse"               # 损失函数（mse, mae等）
+  early_stopping_patience: 5        # 早停策略的耐心值
+  scheduler_factor: 0.5              # 学习率调度器衰减因子
+  scheduler_patience: 5              # 学习率调度器耐心值
+  use_tensorboard: True              # 是否使用tensorboard记录日志
+  tensorboard_dir: "logs/test"       # tensorboard日志目录
+
+# 超参数调优配置
+tuning:
+  n_trials: 50                       # 超参数调优的试验次数
+  epochs_per_trial: 15                # 每轮试验的尝试轮次
+  parameters:                        # 要调优的参数
+    hidden_dim:                      # 每个LSTM模块隐藏层维度范围
+      min: 50
+      max: 200
+    num_layers:                      # LSTM模块级联层数范围
+      min: 1
+      max: 3
+    dropout:                         # Dropout率
+      min: 0.1
+      max: 0.5
+    learning_rate:                   # 学习率
+      min: 0.00001
+      max: 0.1
+      log: true
+
+# 可视化配置
+visualization:
+  figsize: [10, 6]                   # 图形大小
+  dpi: 300                           # 保存图像的DPI
+  colors:                            # 绘图颜色
+    prediction: "red"
+    actual: "blue"
+  show_legend: true                  # 是否在图上显示图例
+  save_format: "png"                 # 保存图像的格式
+
+# 保存结果的输出目录
+output_dir: "outputs/test"
