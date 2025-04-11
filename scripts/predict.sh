@@ -3,7 +3,7 @@
 # 使用训练好的CNN-LSTM模型生成预测
 
 # 默认配置文件
-CONFIG_FILE="configs/default_config.yaml"
+CONFIG_FILE="configs/SCY_config.yaml"
 
 # 解析命令行参数
 while [[ $# -gt 0 ]]; do

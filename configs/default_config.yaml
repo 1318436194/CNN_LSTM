@@ -17,7 +17,7 @@ data:
   train_ratio: 0.7                   # 划分训练数据比例
   val_ratio: 0.2                     # 划分验证数据比例
   test_ratio: 0.1                    # 划分测试数据比例
-  batch_size: 64                     # 训练和验证的批量大小
+  batch_size: 32                     # 训练和验证的批量大小
   shuffle: True                     # 是否打乱训练数据
   normalize: True                    # 是否对数据进行归一化
 
@@ -26,11 +26,11 @@ model:
   type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
   bidirectional: True                # 是否使用双向LSTM
   input_dim: 3                       # 输入特征维度
-  hidden_dim: 96                    # 隐藏层维度大小
+  hidden_dim: 170                    # 隐藏层维度大小
   output_dim: 3                      # 输出特征数量（目标维度）
   num_layers: 1                      # LSTM模块级联层数
-  dropout: 0.35724735537818275                       # Dropout率
-  learning_rate: 0.0005327153939841018               # 优化器学习率
+  dropout: 0.43179607727150693                      # Dropout率
+  learning_rate: 0.00043879372035896875               # 优化器学习率
   use_checkpoint: False                # 是否从检查点继续训练模型
   checkpoint_path: "outputs/demo/demo_weight.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
 
