@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # 使用训练好的CNN-LSTM模型生成预测
 

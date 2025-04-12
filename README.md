@@ -56,7 +56,7 @@ conda config --set auto_activate_base false
 
 # 方法一： 手动配置环境
 conda create -n CNN_LSTM -m python=3.10 -y
-codna activate CNN_LSTM
+conda activate CNN_LSTM
 pip install torch torchvision torchaudio optuna pandas scikit-learn matplotlib tensorboard
 # 50系显卡需要 CUDA 12.8 + Pytorch 2.8
 # pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128

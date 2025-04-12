@@ -5,20 +5,18 @@ data:
   file_path: "datasets/airbnb-stock.csv"  # 输入数据文件路径
   time_column: "date"                # 时间/日期列名
   feature_columns:                   # 数据集中用于训练的特征列名列表
-    - "date"
     - "open"
     - "close_last"
     - "volume"
     - "high"
     - "low"
   target_columns:                    # 预测目标特征的列名
-    - "date"
     - "open"
     - "close_last"
     - "volume"
     - "high"
     - "low"
-  sequence_length: 60                # 用作输入的时间步数
+  sequence_length: 1                # 用作输入的时间步数
   forecast_horizon: 1                # 预测的时间步数
   train_ratio: 0.7                   # 划分训练数据比例
   val_ratio: 0.2                     # 划分验证数据比例
@@ -31,12 +29,12 @@ data:
 model:
   type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
   bidirectional: True                # 是否使用双向LSTM
-  input_dim: 6                       # 输入特征维度
-  hidden_dim: 166                    # 隐藏层维度大小
-  output_dim: 6                      # 输出特征数量（目标维度）
+  input_dim: 5                       # 输入特征维度
+  hidden_dim: 111                    # 隐藏层维度大小
+  output_dim: 5                      # 输出特征数量（目标维度）
   num_layers: 1                      # LSTM模块级联层数
-  dropout: 0.35724735537818275                       # Dropout率
-  learning_rate: 0.005327153939841018               # 优化器学习率
+  dropout: 0.45724735537818275                       # Dropout率
+  learning_rate: 0.05327153939841018               # 优化器学习率
   use_checkpoint: False                # 是否从检查点继续训练模型
   checkpoint_path: "outputs/demo/demo_weight.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
 
@@ -45,10 +43,10 @@ training:
   epochs: 300                        # 训练轮次
   optimizer: "adam"                  # 优化器类型（adam, sgd等）
   loss_function: "mse"               # 损失函数（mse, mae等）
-  early_stopping_patience: 20         # 早停策略的耐心值
-  use_scheduler: False                # 是否使用学习率调度器
-  scheduler_factor: 0.5              # 学习率调度器衰减因子
-  scheduler_patience: 10              # 学习率调度器耐心值
+  early_stopping_patience: 50         # 早停策略的耐心值
+  use_scheduler: True                # 是否使用学习率调度器
+  scheduler_factor: 0.2              # 学习率调度器衰减因子
+  scheduler_patience: 20              # 学习率调度器耐心值
   use_tensorboard: True              # 是否使用tensorboard记录日志
   tensorboard_dir: "logs/scy"       # tensorboard日志目录
 

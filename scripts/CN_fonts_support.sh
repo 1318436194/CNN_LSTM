@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # 为matplotlib安装中文字体，解决可视化乱码
 

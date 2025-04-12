@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # 训练用于时间序列预测的CNN-LSTM模型
 

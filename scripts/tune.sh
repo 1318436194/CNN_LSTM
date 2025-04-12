@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # CNN-LSTM模型的超参数调优
 
