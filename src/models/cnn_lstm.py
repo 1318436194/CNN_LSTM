@@ -87,8 +87,11 @@ class CNNLSTM(nn.Module):
         # 编码输入序列
         _, (hidden, cell) = self.encoder(x_cnn)
         
-        # 用零初始化解码器输入
+        # 用零初始化解码器输入，并加入小的随机噪声防止梯度爆炸或消失
         decoder_input = torch.zeros(batch_size, target_len, self.fc.out_features, device=x.device)
+        # 添加小的随机噪声
+        noise = torch.randn_like(decoder_input) * 1e-5
+        decoder_input = decoder_input + noise
         
         # 使用解码器生成预测
         decoder_output, _ = self.decoder(decoder_input, (hidden, cell))

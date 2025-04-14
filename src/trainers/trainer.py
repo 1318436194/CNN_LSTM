@@ -89,6 +89,9 @@ class Trainer:
         
         self.model = self.model.to(self.device)
         
+        # 初始化模型权重
+        self._initialize_weights()
+        
         # 设置优化器
         optimizer_name = config.get('optimizer', 'adam').lower()
         lr = config.get('learning_rate', 0.001)
@@ -129,6 +132,20 @@ class Trainer:
             self.writer = SummaryWriter(log_dir=config.get('tensorboard_dir', './logs'))
         else:
             self.writer = None
+            
+        # 设置梯度裁剪
+        self.grad_clip = config.get('grad_clip', 1.0)
+    
+    def _initialize_weights(self):
+        """
+        初始化模型权重，以避免训练开始时出现梯度爆炸或消失问题。
+        """
+        for name, param in self.model.named_parameters():
+            if 'weight' in name:
+                if len(param.shape) >= 2:  # 对于二维权重矩阵（如线性层和LSTM层）
+                    nn.init.xavier_uniform_(param)
+                else:  # 对于一维权重（如偏置）
+                    nn.init.uniform_(param, -0.1, 0.1)
     
     def train(self, 
              train_loader: torch.utils.data.DataLoader,
@@ -174,8 +191,17 @@ class Trainer:
                 # 计算损失
                 loss = self.criterion(output, y_batch)
                 
+                # 检查是否有NaN值
+                if torch.isnan(loss).item():
+                    self.logger.warning(f"检测到NaN损失，跳过该批次")
+                    continue
+                
                 # 反向传播和优化
                 loss.backward()
+                
+                # 应用梯度裁剪防止梯度爆炸
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.grad_clip)
+                
                 self.optimizer.step()
                 
                 epoch_loss += loss.item()

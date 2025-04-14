@@ -14,12 +14,12 @@ data:
     - "high"
     - "low"
     - "close"
-  sequence_length: 1                # 用作输入的时间步数
+  sequence_length: 30                # 用作输入的时间步数
   forecast_horizon: 1                # 预测的时间步数
   train_ratio: 0.7                   # 划分训练数据比例
   val_ratio: 0.2                     # 划分验证数据比例
   test_ratio: 0.1                    # 划分测试数据比例
-  batch_size: 64                     # 训练和验证的批量大小
+  batch_size: 32                     # 训练和验证的批量大小
   shuffle: True                     # 是否打乱训练数据
   normalize: True                    # 是否对数据进行归一化
 
@@ -28,11 +28,11 @@ model:
   type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
   bidirectional: True                # 是否使用双向LSTM
   input_dim: 4                       # 输入特征维度
-  hidden_dim: 111                    # 隐藏层维度大小
+  hidden_dim: 2                    # 隐藏层维度大小（降低复杂度）
   output_dim: 4                      # 输出特征数量（目标维度）
   num_layers: 1                      # LSTM模块级联层数
-  dropout: 0.45724735537818275                       # Dropout率
-  learning_rate: 0.05327153939841018               # 优化器学习率
+  dropout: 0.3                       # Dropout率（降低以减少正则化）
+  learning_rate: 0.00005               # 优化器学习率（降低以提高稳定性）
   use_checkpoint: False                # 是否从检查点继续训练模型
   checkpoint_path: "outputs/demo/demo_weight.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
 
@@ -41,12 +41,13 @@ training:
   epochs: 300                        # 训练轮次
   optimizer: "adam"                  # 优化器类型（adam, sgd等）
   loss_function: "mse"               # 损失函数（mse, mae等）
-  early_stopping_patience: 50         # 早停策略的耐心值
+  early_stopping_patience: 10         # 早停策略的耐心值
   use_scheduler: True                # 是否使用学习率调度器
   scheduler_factor: 0.2              # 学习率调度器衰减因子
-  scheduler_patience: 20              # 学习率调度器耐心值
+  scheduler_patience: 8              # 学习率调度器耐心值
   use_tensorboard: True              # 是否使用tensorboard记录日志
   tensorboard_dir: "logs/scy_1"       # tensorboard日志目录
+  grad_clip: 0.5                     # 梯度裁剪阈值
 
 # 超参数调优配置
 tuning:
@@ -57,17 +58,17 @@ tuning:
       min: 0
       max: 1
     hidden_dim:                      # 每个LSTM模块隐藏层维度范围
-      min: 50
-      max: 200
+      min: 32
+      max: 128
     num_layers:                      # LSTM模块级联层数范围
       min: 1
-      max: 3
+      max: 2
     dropout:                         # Dropout率
       min: 0.1
-      max: 0.5
+      max: 0.3
     learning_rate:                   # 学习率
-      min: 0.00001
-      max: 0.1
+      min: 0.0001
+      max: 0.001
       log: true
 
 # 可视化配置
