@@ -1,0 +1,85 @@
+# CNN-LSTM 时间序列预测项目的默认配置
+
+# 数据配置
+data:
+  file_path: "datasets/output_3500.csv"  # 输入数据文件路径
+  time_column: "timestamp"                # 时间/日期列名
+  feature_columns:                   # 数据集中用于训练的特征列名列表
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+  target_columns:                    # 预测目标特征的列名
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+  sequence_length: 1                # 用作输入的时间步数
+  forecast_horizon: 1                # 预测的时间步数
+  train_ratio: 0.7                   # 划分训练数据比例
+  val_ratio: 0.2                     # 划分验证数据比例
+  test_ratio: 0.1                    # 划分测试数据比例
+  batch_size: 64                     # 训练和验证的批量大小
+  shuffle: True                     # 是否打乱训练数据
+  normalize: True                    # 是否对数据进行归一化
+
+# 模型配置
+model:
+  type: "cnn_lstm"                   # 模型类型（目前仅支持cnn_lstm）
+  bidirectional: True                # 是否使用双向LSTM
+  input_dim: 4                       # 输入特征维度
+  hidden_dim: 111                    # 隐藏层维度大小
+  output_dim: 4                      # 输出特征数量（目标维度）
+  num_layers: 1                      # LSTM模块级联层数
+  dropout: 0.45724735537818275                       # Dropout率
+  learning_rate: 0.05327153939841018               # 优化器学习率
+  use_checkpoint: False                # 是否从检查点继续训练模型
+  checkpoint_path: "outputs/demo/demo_weight.pth"              # 加载模型检查点的路径（用于预测或者从检查点训练）
+
+# 训练配置
+training:
+  epochs: 300                        # 训练轮次
+  optimizer: "adam"                  # 优化器类型（adam, sgd等）
+  loss_function: "mse"               # 损失函数（mse, mae等）
+  early_stopping_patience: 50         # 早停策略的耐心值
+  use_scheduler: True                # 是否使用学习率调度器
+  scheduler_factor: 0.2              # 学习率调度器衰减因子
+  scheduler_patience: 20              # 学习率调度器耐心值
+  use_tensorboard: True              # 是否使用tensorboard记录日志
+  tensorboard_dir: "logs/scy_1"       # tensorboard日志目录
+
+# 超参数调优配置
+tuning:
+  n_trials: 50                       # 超参数调优的试验次数
+  epochs_per_trial: 15               # 每轮试验的尝试轮次
+  parameters:                        # 要调优的参数
+    bidirectional:                   # 是否使用双向LSTM
+      min: 0
+      max: 1
+    hidden_dim:                      # 每个LSTM模块隐藏层维度范围
+      min: 50
+      max: 200
+    num_layers:                      # LSTM模块级联层数范围
+      min: 1
+      max: 3
+    dropout:                         # Dropout率
+      min: 0.1
+      max: 0.5
+    learning_rate:                   # 学习率
+      min: 0.00001
+      max: 0.1
+      log: true
+
+# 可视化配置
+visualization:
+  figsize: [10, 6]                   # 图形大小
+  font: "SimHei"                     # 字体(细黑"SimHei"，或者艺术字体"?????")
+  dpi: 300                           # 保存图像的DPI
+  colors:                            # 绘图颜色
+    prediction: "red"
+    actual: "blue"
+  show_legend: true                  # 是否在图上显示图例
+  save_format: "png"                 # 保存图像的格式
+
+# 保存结果的输出目录
+output_dir: "outputs/scy_1"

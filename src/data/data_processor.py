@@ -39,9 +39,16 @@ class TimeSeriesDataProcessor:
 		# 加载数据
 		df = pd.read_csv(file_path)
 
+		if df[time_column].dtype != np.float64:
+			df[time_column] = pd.to_datetime(df[time_column]).apply(lambda x: x.timestamp())
+
 		# 如果指定了时间列，则按时间列排序
 		if time_column and time_column in df.columns:
 			df = df.sort_values(by=time_column, ascending=True)
+		# 查看df每列的数据类型
+		print(df.dtypes)
+
+		print(df.head())
 
 		self.df = df
 		return df
@@ -58,7 +65,7 @@ class TimeSeriesDataProcessor:
 
 		# 提取特征列和目标列
 		feature_columns = self.config.get('feature_columns', [])
-		target_columns = self.config.get('target_columns')
+		target_columns = self.config.get('target_columns', [])
 
 		if not feature_columns:
 			# 使用除目标列和时间列外的所有列作为特征
